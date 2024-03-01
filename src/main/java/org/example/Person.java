@@ -16,8 +16,8 @@ public class Person {
         this.name = name;
     }
 
-    public Person(String nombre, int day, int month, int year) {
-        this.name = nombre;
+    public Person(String name, int day, int month, int year) {
+        this.name = name;
         this.birthdate = Calendar.getInstance();
         this.birthdate.set(year, day, month);
     }
@@ -27,7 +27,7 @@ public class Person {
         this.firstParent = firstParent;
     }
 
-    public void addBrotehr(String name) {
+    public void addBrother(String name) {
         Person brother = new Person(name);
         this.brothers.add(brother);
         if (!brothers.contains(this))  {
@@ -40,11 +40,11 @@ public class Person {
         this.secondParent = secondParent;
     }
 
-    public List<Person> getBro() {
+    public List<Person> getBrothers() {
         return brothers;
     }
 
-    public boolean familiaNumerosa() {
+    public boolean largeFamily() {
         return brothers.size() > 2;
     }
 
