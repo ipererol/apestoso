@@ -5,20 +5,21 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Person {
+
     private String name;
-    private Calendar brithdate;
+    private Calendar birthdate;
     private Person firstParent;
     private Person secondParent;
-    private List<Person> bro = new ArrayList<>();
+    private List<Person> brothers = new ArrayList<>();
 
     public Person(String name) {
         this.name = name;
     }
-    
+
     public Person(String nombre, int day, int month, int year) {
         this.name = nombre;
-        this.brithdate = Calendar.getInstance();
-        this.brithdate.set(year, day, month);
+        this.birthdate = Calendar.getInstance();
+        this.birthdate.set(year, day, month);
     }
 
     public void setFirstParent(String name) {
@@ -26,11 +27,12 @@ public class Person {
         this.firstParent = firstParent;
     }
 
-    public void addBro(Person bro) {
-        // bro...
-        this.bro.add(bro);
-        bro.getBro().add(this);
-       
+    public void addBrotehr(String name) {
+        Person brother = new Person(name);
+        this.brothers.add(brother);
+        if (!brothers.contains(this))  {
+            this.brothers.add(this);
+        }
     }
 
     public void setSecondParent(String name) {
@@ -39,17 +41,27 @@ public class Person {
     }
 
     public List<Person> getBro() {
-        return bro;
+        return brothers;
     }
 
     public boolean familiaNumerosa() {
-        return bro.size() > 2;
+        return brothers.size() > 2;
     }
 
     public boolean get_Exposito() {
-        if(firstParent == null && secondParent == null) {
+        if (firstParent == null && secondParent == null) {
             return true;
-        } else
+        } else {
             return false;
+        }
+    }
+
+    public int getAge() {
+        Calendar now = Calendar.getInstance();
+        int age = now.get(Calendar.YEAR) - this.birthdate.get(Calendar.YEAR);
+        if (now.get(Calendar.MONTH) < this.birthdate.get(Calendar.MONTH)) {
+            age--;
+        }
+        return age;
     }
 }
