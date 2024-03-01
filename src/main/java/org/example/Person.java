@@ -5,18 +5,18 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Person {
-    private String nombre_ALUMNO;
+    private String name;
     private Calendar brithdate;
     private Person firstParent;
-    private Person progenitor2;
+    private Person secondParent;
     private List<Person> bro = new ArrayList<>();
 
     public Person(String name) {
-        this.nombre_ALUMNO = name;
+        this.name = name;
     }
     
     public Person(String nombre, int day, int month, int year) {
-        this.nombre_ALUMNO = nombre;
+        this.name = nombre;
         this.brithdate = Calendar.getInstance();
         this.brithdate.set(year, day, month);
     }
@@ -33,8 +33,9 @@ public class Person {
        
     }
 
-    public void setProgenitor2(Person progenitor2) {
-        this.progenitor2 = progenitor2;
+    public void setSecondParent(String name) {
+        Person secondParent = new Person(name);
+        this.secondParent = secondParent;
     }
 
     public List<Person> getBro() {
@@ -46,7 +47,7 @@ public class Person {
     }
 
     public boolean get_Exposito() {
-        if(firstParent == null && progenitor2 == null) {
+        if(firstParent == null && secondParent == null) {
             return true;
         } else
             return false;
