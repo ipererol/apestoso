@@ -1,33 +1,39 @@
-package org.example;
+package codeclean;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Clase1 {
-    public String nombre_Clase;
-    public int nPLAZAS = 5;
-    clase2[] asignaturra = new clase2[nPLAZAS];
+    public String nombreClase;
+    public int numeroPlazas = 5;
+    clase2[] asignatura = new clase2[numeroPlazas];
 
     Clase1(String n) {
-        nombre_Clase = n;
+        nombreClase = n;
     }
 
-    // aniade asignatura si pasan cosas...
+    // añade asignatura si pasan cosas...
     public void aniadirAsignaturra(clase2 as) throws Exception {
-        if(asignaturra[0] != null)
-            if(asignaturra[1] != null)
-                if(asignaturra[2] != null)
-                    if(asignaturra[3] != null)
-                        if(asignaturra[4]!=null)
-                            throw new Exception("a");
-        else
-            asignaturra[4] = as;
-        else
-            asignaturra[3] = as;
-        else
-            asignaturra[2] = as;
-        else asignaturra[1] = as;
-        else asignaturra[0] = as;
-
+        if (asignatura[0] != null) {
+            if (asignatura[1] != null) {
+                if (asignatura[2] != null) {
+                    if (asignatura[3] != null) {
+                        if (asignatura[4] != null) {
+                              throw new Exception("a");
+                        } else {
+                            asignatura[4] = as;
+                        }
+                    } else {
+                        asignatura[3] = as;
+                    }
+                } else {
+                    asignatura[2] = as;
+                }
+            } else {
+                asignatura[1] = as;
+            }
+        } else {
+            asignatura[0] = as;
+        }
     }
 }
