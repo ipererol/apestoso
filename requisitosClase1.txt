@@ -4,3 +4,6 @@ Antes de nada modificar nombre de las clases para que tengan relacion unas con o
 Linea 7 -> Renombrar variable "nombre_Clase";
 Linea 8 -> Renombrar variable "nPLAZAS";
 Linea 9 -> Renombrar Nombre del array "asignaturra" y nombre de la clase;
+Linea 11 arregla clase1 
+Linea 16 a la 30 arreglar el metodo aniadirAsignaturra
+Linea 16 a la 30 Dentro del metodo añadir o modificar excepcion
