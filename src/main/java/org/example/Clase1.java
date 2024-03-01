@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clase1 {
-    public String nombre_Clase;
-    public int nPLAZAS = 5;
-    clase2[] asignaturra = new clase2[nPLAZAS];
+    public String nameDegree;
+    ArrayList<clase2> listSubject = new ArrayList<>();
 
-    Clase1(String n) {
-        nombre_Clase = n;
+    Clase1(String nameDegree, ArrayList<clase2> listSubject) {
+        this.nameDegree = nameDegree;
+        this.listSubject = listSubject;
     }
 
     // aniade asignatura si pasan cosas...
