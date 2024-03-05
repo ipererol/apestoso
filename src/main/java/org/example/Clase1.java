@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clase1 {
-    public String nombreClase;
+    public String nombreClase; 
     public int numeroMaxAsignatura = 5;
     //numeroPlazas se tiene que llamar numeroMaxAsignatura
     clase2[] asignatura = new clase2[numeroPlazas]; // DEBERIA DE SER UN ARRAYLIST DE CLASE2
