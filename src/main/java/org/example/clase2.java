@@ -23,8 +23,20 @@ public class clase2 {
         this.people = people;
     }
 
-    public void setProgenitor1(clase2 progenitor1) {
-        this.progenitor1 = progenitor1;
+    public Class2 getMother() {
+        return mother;
+    }
+
+    public void setMother(Class2 mother) {
+        this.mother = mother;
+    }
+
+    public Calendar getBirhdate(){
+	return birthdate;
+    }
+
+    public void setBirthdate(Calendar birthdate){
+    	this.birthdate = birthdate;
     }
 
     public void addBro(clase2 bro) {
