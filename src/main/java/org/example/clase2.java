@@ -64,10 +64,11 @@ public class clase2 {
         return brother.size() > 2;
     }
     
-    public boolean get_Exposito() {
-        if(progenitor1 == null && progenitor2 == null) {
+    public boolean getOrphan() {
+        if (mother == null && father == null) {
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 }
