@@ -1,23 +1,26 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 public class clase2 {
-    private String nombre_ALUMNO;
-    private Calendar brithdate;
-    private clase2 progenitor1;
-    private clase2 progenitor2;
-    private List<clase2> bro = new ArrayList<>();
+    private String people;
+    private Calendar birthdate;
+    private Class2 mother;
+    private Class2 father;
+    private List<Class2> brother = new ArrayList<>();
 
-    public clase2(String name) {
-        this.nombre_ALUMNO = name;
+    public Class2(String name, int day, int month, int year) {
+        this.people = name;
+        this.birthdate = Calendar.getInstance();
+        this.birthdate.set(year, day, month);
     }
-    public clase2(String nombre, int day, int month, int year) {
-        this.nombre_ALUMNO = nombre;
-        this.brithdate = Calendar.getInstance();
-        this.brithdate.set(year, day, month);
+
+    public String getPeople() {
+        return people;
+    }
+
+    public void setPeople(String people) {
+        this.people = people;
     }
 
     public void setProgenitor1(clase2 progenitor1) {
