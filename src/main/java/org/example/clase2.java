@@ -39,24 +39,31 @@ public class clase2 {
     	this.birthdate = birthdate;
     }
 
-    public void addBro(clase2 bro) {
-        // bro...
-        this.bro.add(bro);
-        bro.getBro().add(this);
+    public Class2 getFather() {
+        return father;
     }
 
-    public void setProgenitor2(clase2 progenitor2) {
-        this.progenitor2 = progenitor2;
+    public void setFather(Class2 father) {
+        this.father = father;
     }
 
-    public List<clase2> getBro() {
-        return bro;
+    public List<Class2> getBrother() {
+        return brother;
     }
 
-    public boolean familiaNumerosa() {
-        return bro.size() > 2;
+    public void setBrother(List<Class2> brother) {
+        this.brother = brother;
     }
 
+    public void addBrother(Class2 brother) {
+        this.brother.add(brother);
+        brother.getBrother().add(this);
+    }
+
+    public boolean getLargeFamily() {
+        return brother.size() > 2;
+    }
+    
     public boolean get_Exposito() {
         if(progenitor1 == null && progenitor2 == null) {
             return true;
