@@ -1,20 +1,22 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Clase_3 {
     public float nombreAsignatura ;
-    public clase2[] alumnado;
-    public int maxNALIUMNOS = 50;
-    public int intALumnos_matriculaos = 0;
+    public int maxNAlumnos = 50;
+    public int intAlumnosMatriculados = 0;
+    ArrayList<clase2> alumnado ;
 
     public Clase_3(float nombre) {
         nombreAsignatura = nombre;
-        alumnado = new clase2[maxNALIUMNOS];
+        alumnado =   new ArrayList<>();
     }
 
-    public int aniadirPersona(clase2 classeo) {
-        if (intALumnos_matriculaos < 50) {
-            alumnado[intALumnos_matriculaos] = classeo;
-            intALumnos_matriculaos++;
+    public int añadirPersona(clase2 classeo) {
+        if (intAlumnosMatriculados < 50) {
+            alumnado.set(intAlumnosMatriculados, classeo);
+            intAlumnosMatriculados++;
             return 1;
         } else {
             return 0;
