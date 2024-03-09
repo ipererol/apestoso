@@ -13,7 +13,7 @@ public class Clase_3 {
         students =   new ArrayList<>();
     }
 
-    public int añadirPersona(clase2 classeo) {
+    public int addPerson(clase2 classeo) {
         if (matriculatedStudents < 50) {
             students.set(matriculatedStudents, classeo);
             matriculatedStudents++;
