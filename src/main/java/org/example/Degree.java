@@ -40,17 +40,13 @@ public class Degree {
     }
 
     public boolean darDeBajaAlumno(String nombre) {
-        int i = 0;
-        for(Person c4 : alumnado) {
-            if(alumnado[i].equals(new Person(nombre)))
-                break;
-            i++;
-        }
-        if(i==50) {
-            return false;
-        } else {
-            alumnado[i] = null;
-            return false;
+        for(int i = 0; i < students.size(); i++) {
+             Person student = students.get(i);
+            if(student != null && student.getName().equals(nombre)){
+                 students.remove(i);
+                 matriculaStudents--;
+                 return true;
         }
     }
+         return false;
 }
