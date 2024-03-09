@@ -21,17 +21,17 @@ public class Clase_3 {
         }
     }
 //Clase 2 convendría que lo llamaramos "Alumno"
-    public clase2 nombrarAlumno(int posicion) throws Exception {
-        bool fueraDeRango = (posicion < 0 || posicion >= alumnado.length); 
-        String noExiste = "no existe alumno en la posición " + posicion;    
-        if (fueraDeRango) {
-            throw new Exception(noExiste);
+    public clase2 nameStudent(int position) throws Exception {
+        bool outOfRange = (position < 0 || position >= studentBody.length); 
+        String notExists = "Ah ah ah, you didn't say the magic word. There is no student in position " + position;    
+        if (outOfRange) {
+            throw new Exception(notExists);
         }
-        clase2 alumno = alumnado[posicion];        
-        if (alumno == null) {
-            throw new Exception(noExiste);
+        clase2 student = studentBody[position];        
+        if (student == null) {
+            throw new Exception(notExists);
         } else {
-            return alumno;
+            return student;
         }
     }
 
