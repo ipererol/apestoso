@@ -39,7 +39,7 @@ public class Degree {
         }
     }
 
-    public boolean withDrawStudent(String nombre) {
+    public boolean withdrawStudent(String nombre) {
         for(int i = 0; i < students.size(); i++) {
              Person student = students.get(i);
             if(student != null && student.getName().equals(nombre)){
