@@ -3,12 +3,12 @@ package org.example;
 import java.util.ArrayList;
 
 public class Degree {
-     public float subjectName ;
+     public String subjectName ;
     public int maxNStudents = 50;
     public int matriculatedStudents = 0;
     ArrayList<Person> students ;
 
-    public Degree(float subjectName, ArrayList<Person> students) {
+    public Degree(String subjectName, ArrayList<Person> students) {
         this.subjectName = subjectName;
         this.students = students;
     }
@@ -39,7 +39,7 @@ public class Degree {
         }
     }
 
-    public boolean darDeBajaAlumno(String nombre) {
+    public boolean withDrawStudent(String nombre) {
         for(int i = 0; i < students.size(); i++) {
              Person student = students.get(i);
             if(student != null && student.getName().equals(nombre)){
