@@ -14,12 +14,15 @@ public class Degree {
     }
 
     // aniade asignatura si pasan cosas...
-    public void aniadirAsignaturra(Person as) throws Exception {
-        if (listSubject.size() == 5) {
+    public void agregarAsignatura(Person as) throws Exception {
+                       
+        if (listSubject.size() > 5) {
 //aniadir excepcion si la lista de asignaturas es mayor que 5
+        throw new Exception("Error:Limite de asignaturas superado");
         } else {
             listSubject.add(as);
         }
+        
 
     }
 }
