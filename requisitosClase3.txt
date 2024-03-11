@@ -1,0 +1,70 @@
+Requisitos
+Clase_3
+
+-Nombres en inglés.
+
+-Nombres bien escritos.
+
+---------------------------------------------------------------------------------
+
+$ public float nombreAsignatura ; "Cambiar nombre variable o el tipo de variable"(Linea 4)
+
+$ public int maxNALIUMNOS = 50; "Cambiar nombre variable" (Linea 6)
+
+$ public int intALumnos_matriculaos = 0; "Cambiar nombre variable" (Linea 7)
+
+$ public Clase_3(float nombre) { "Cambiar nombre variable o el tipo de variable" (Linea 9)
+
+$ public int aniadirPersona(clase2 classeo) { "Cambiar nombre método y nombre de la variable que le pasan" (Linea 14)
+
+nombrarAlumno
+-------------
+
+-Al código le faltan los {} en el if y else (Ni siquiera se por qué no da error).
+
+-El código está fundamentalmente mal: 
+
+1$$		if (alumnado[n] == null)
+2$$			return alumnado[n];
+3$$		else
+4$$			throw new Exception("excepcion");
+	
+El programa solo devuelve el alumno si alumnado[n] == null.
+Si es null no puede ser devuelto por definición, por lo que dará error.
+El programa de hecho lanza una excepción cuando HAY un nombre.
+Hay que cambiar la segunda y cuarta línea de sitio.
+
+
+darDeBajaAlumno
+---------------
+
+- El programa esta definido como public boolean, aunque no tiene mucho sentido en el contexto de este programa
+
+- Al if dentro del for le falta el {}.
+
+- Uso de fore innecesario, de hecho, el programa usa fore para hacer un for.
+
+1$$		int i = 0;
+2$$		for(clase2 c4 : alumnado) {
+3$$			if(alumnado[i].equals(new clase2(nombre)))
+4$$				break;
+5$$			i++
+6$$		}
+7$$		if(i==50) {
+8$$			return false;
+9$$		} else {
+10$			alumnado[i] = null;
+11$			return false;
+12$		}
+
+Lo que hace este código es establecer un int i con valor 0.
+Despues, hace un fore del array alumnado de clase2, cada valor llamado c4.
+Si alumnado en [i] equivale a una nueva clase2 llamada (variable nombre), hace break del for.
+Si no, aumenta i en 1.
+Una vez haya recorrido todo el array, el programa comprueba si i == 50 (Es decir, si no se ha activado $$3 / $$4).
+Si lo ha hecho, es decir, no se ha encontrado el nombre dado, devuelve false.
+Si es distinto a 50 (Es decir, ha encontrado el nombre y ejecutado el break), convierte alumnado[i] en null y devuelve false.
+
+Esto tiene obvios problemas, como el fore funcionando como for de forma improvisada, o, como está escrito, solo detecta si es 50 o no, sin importar si maxNALIUMNOS es 50 o no.
+
+- El programa se beneficiaría mucho más de alumnado siendo una list y no un array.
