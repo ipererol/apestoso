@@ -1,45 +1,52 @@
-apackage org.example;
+package org.example;
 
-public class Clase_3 {
-    public float nombreAsignatura ;
-    public clase2[] alumnado;
-    public int maxNALIUMNOS = 50;
-    public int intALumnos_matriculaos = 0;
+import java.util.ArrayList;
 
-    public Clase_3(float nombre) {
-        nombreAsignatura = nombre;
-        alumnado = new clase2[maxNALIUMNOS];
+public class Degree {
+     public String subjectName ;
+    public int maxNStudents = 50;
+    public int matriculatedStudents = 0;
+    ArrayList<Person> students ;
+
+    public Degree(String subjectName, ArrayList<Person> students) {
+        this.subjectName = subjectName;
+        this.students = students;
     }
 
-    public int aniadirPersona(clase2 classeo) {
-        if (intALumnos_matriculaos < 50) {
-            alumnado[intALumnos_matriculaos] = classeo;
-            intALumnos_matriculaos++;
+
+
+      public int addPerson(Person classeo) {
+        if (matriculatedStudents < 50) {
+            students.set(matriculatedStudents, classeo);
+            matriculatedStudents++;
             return 1;
         } else {
             return 0;
         }
     }
 
-    public clase2 nombrarAlumno(int n) throws Exception {
-        if (alumnado[n] == null)
-            return alumnado[n];
-        else
-            throw new Exception("excepcion");
+    public Person nameStudent(int position) throws Exception {
+        boolean outOfRange = (position < 0 || position >= students.size()); 
+        String notExists = "Ah ah ah, you didn't say the magic word. There is no student in position " + position;    
+        if (outOfRange) {
+            throw new Exception(notExists);
+        }
+        Person student = students.get(position);        
+        if (student == null) {
+            throw new Exception(notExists);
+        } else {
+            return student;
+        }
     }
 
-    public boolean darDeBajaAlumno(String nombre) {
-        int i = 0;
-        for(clase2 c4 : alumnado) {
-            if(alumnado[i].equals(new clase2(nombre)))
-                break;
-            i++;
-        }
-        if(i==50) {
-            return false;
-        } else {
-            alumnado[i] = null;
-            return false;
+    public boolean withdrawStudent(String nombre) {
+        for(int i = 0; i < students.size(); i++) {
+             Person student = students.get(i);
+            if(student != null && student.getName().equals(nombre)){
+                 students.remove(i);
+                 matriculaStudents--;
+                 return true;
         }
     }
+         return false;
 }
