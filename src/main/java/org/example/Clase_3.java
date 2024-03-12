@@ -20,12 +20,19 @@ public class Clase_3 {
             return 0;
         }
     }
-
-    public clase2 nombrarAlumno(int n) throws Exception {
-        if (alumnado[n] == null)
-            return alumnado[n];
-        else
-            throw new Exception("excepcion");
+//Clase 2 convendría que lo llamaramos "Alumno"
+    public clase2 nameStudent(int position) throws Exception {
+        bool outOfRange = (position < 0 || position >= studentBody.length); 
+        String notExists = "Ah ah ah, you didn't say the magic word. There is no student in position " + position;    
+        if (outOfRange) {
+            throw new Exception(notExists);
+        }
+        clase2 student = studentBody[position];        
+        if (student == null) {
+            throw new Exception(notExists);
+        } else {
+            return student;
+        }
     }
 
     public boolean darDeBajaAlumno(String nombre) {
