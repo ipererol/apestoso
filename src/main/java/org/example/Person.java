@@ -56,6 +56,14 @@ public class Person {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getAge() {
         Calendar now = Calendar.getInstance();
         int age = now.get(Calendar.YEAR) - this.birthdate.get(Calendar.YEAR);
