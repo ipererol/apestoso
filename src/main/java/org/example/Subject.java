@@ -2,13 +2,13 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Degree {
+public class Subject {
      public String subjectName ;
     public int maxNStudents = 50;
     public int matriculatedStudents = 0;
     ArrayList<Person> students ;
 
-    public Degree(String subjectName, ArrayList<Person> students) {
+    public Subject(String subjectName, ArrayList<Person> students) {
         this.subjectName = subjectName;
         this.students = students;
     }
@@ -41,12 +41,13 @@ public class Degree {
 
     public boolean withdrawStudent(String nombre) {
         for(int i = 0; i < students.size(); i++) {
-             Person student = students.get(i);
+            Person student = students.get(i);
             if(student != null && student.getName().equals(nombre)){
-                 students.remove(i);
-                 matriculaStudents--;
-                 return true;
-        }
+                students.remove(i);
+                matriculatedStudents--;
+                return true;
+            }
+       }
+            return false;
     }
-         return false;
 }
