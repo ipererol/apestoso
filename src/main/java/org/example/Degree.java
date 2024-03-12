@@ -1,4 +1,4 @@
-package org.example;
+apackage org.example;
 
 public class Clase_3 {
     public float nombreAsignatura ;
