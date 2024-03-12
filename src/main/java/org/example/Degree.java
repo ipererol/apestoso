@@ -8,19 +8,18 @@ public class Degree {
     public String nameDegree;
     ArrayList<Subject> listSubject = new ArrayList<>();
 
-    Degree(String nameDegree, ArrayList<Subject> listSubject) {
+    Degree(String nameDegree, Subject subject) {
         this.nameDegree = nameDegree;
-        this.listSubject = listSubject;
+        this.listSubject.add(subject);
     }
-
     
-    public void addSubject(Subject as) throws Exception {
+    public void addSubject(Subject subject) throws Exception {
                        
         if (listSubject.size() >= 5) {
 
         throw new Exception("Error:Limite de asignaturas superado");
         } else {
-            listSubject.add(as);
+            listSubject.add(subject);
         }
         
 
