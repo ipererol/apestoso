@@ -6,15 +6,15 @@ import java.util.List;
 public class Degree {
 
     public String nameDegree;
-    ArrayList<Person> listSubject = new ArrayList<>();
+    ArrayList<Subject> listSubject = new ArrayList<>();
 
-    Degree(String nameDegree, ArrayList<Person> listSubject) {
+    Degree(String nameDegree, ArrayList<Subject> listSubject) {
         this.nameDegree = nameDegree;
         this.listSubject = listSubject;
     }
 
     
-    public void addSubject(Person as) throws Exception {
+    public void addSubject(Subject as) throws Exception {
                        
         if (listSubject.size() >= 5) {
 
