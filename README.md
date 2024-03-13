@@ -11,3 +11,4 @@ Optimizar el rendimiento del código y corregir posibles errores o vulnerabilida
 Documentar adecuadamente el código mediante comentarios claros y concisos.
 Asegurar la consistencia y el cumplimiento de estándares de codificación.
 Enviar un pull request al repositorio original con las mejoras implementadas.
+
