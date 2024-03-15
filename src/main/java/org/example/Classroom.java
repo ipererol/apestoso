@@ -1,17 +1,19 @@
 package org.example;
 
-public class Clase_3 {
-    public float nombreAsignatura ;
-    public clase2[] alumnado;
+import java.util.*;
+
+public class Classroom {
+    public String nombreAsignatura ;
+    public ArrayList<clase2> alumnado;
     public static final int MAX_ALUMNO = 50;
     public static int ALUMNOS_MATRICULADOS = 0;
 
-    public Clase_3(float nombre) {
-        nombreAsignatura = nombre;
-        alumnado = new clase2[MAX_ALUMNO];
+    public Classroom(String nombreAsignatura, ArrayList<clase2> alumnado) {
+        this.nombreAsignatura = nombreAsignatura;
+        this.alumnado = alumnado;
     }
 
-    public int aniadirPersona(clase2 classeo) {
+    public int anyadirPersona(clase2 classeo) {
         if (ALUMNOS_MATRICULADOS < 50) {
             alumnado[ALUMNOS_MATRICULADOS] = classeo;
             ALUMNOS_MATRICULADOS++;
