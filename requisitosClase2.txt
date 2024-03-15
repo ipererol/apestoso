@@ -1,0 +1,11 @@
+﻿Clase 2: Persona
+Los nombres de métodos y variables deben ser camelCase y en inglés.
+Clase 2 → es Persona
+Clase 3 → asignatura
+Clase 1 → es una clase
+- nombre_Alumno es solo name, ya que es el nombre de la persona no del alumno
+- birthdate, Isma lo ha escrito mal en el código original, se escribe birthdate
+- progenitor1 / 2 está bien
+- List<clase2> bro son los hermanos de la persona. Por eso la familia es numerosa si tiene más de 2.
+- getExposito → en el else faltan las llaves de apertura y cerrada {}
+- en addBro / addBrother el bro debe ser brother
