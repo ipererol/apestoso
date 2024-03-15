@@ -23,16 +23,17 @@ public class Main {
             System.out.println(" 1. Añadir alumno.");
             System.out.println(" 2. Añadir Curso. ");
             System.out.println(" 3. Listar Curso.");
+            System.out.println(" 4. Eliminar alumno.");
             System.out.println(" S. Salir");
             
             answer = sc.nextLine();
           if (!(answer.equals("1")) || (answer.equals("2"))
-                || (answer.equals("3")) || (answer.equals("S"))) {
-            System.out.println("Respuesta incorrecta. solo 1,2,3 o S para salir");
+                || (answer.equals("3")) || (answer.equals("4")) || (answer.equals("S"))) {
+            System.out.println("Respuesta incorrecta. solo 1,2,3,4 o S para salir");
         }
  
         } while (!(answer.equals("1")) || (answer.equals("2"))
-                || (answer.equals("3")) || (answer.equals("S")));
+                || (answer.equals("3")) || (answer.equals("4")) || (answer.equals("S")));
         
         if (answer.equals("1")) {
             addStudent(sc,degreeAl );
@@ -43,6 +44,8 @@ public class Main {
             for (Student student1 : degreeAl) {
                 System.out.println(student1);
             }
+        }else if (answer.equals("4")){
+            deleteStudents(sc, degreeAl);
         }
     }
 
@@ -65,7 +68,22 @@ public class Main {
 
         } while (!studentName.equals("S"));
     }
-    
-    public static void addDegree(Scanner sc);
+    public static void deleteStudents(Scanner sc, ArrayList<Student> degreeAl){
+        String nameStudentDelete;
+        Student tmp = null;
+        System.out.println("---Introduzca los datos del alumno a borrar: ---");
+        nameStudentDelete = sc.nextLine();
+        
+        for (int i = 0; i < degreeAl.size(); i++) {
+            if (degreeAl.get(i).getName().equals(nameStudentDelete)) {
+                tmp = degreeAl.get(i);
+            }
+        }
+        if (tmp != null){
+            degreeAl.remove(tmp);
+        } else{
+            System.out.println("El estudiante introducido no esta presente en la lista.");
+        }
+    }
 
 }
