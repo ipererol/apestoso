@@ -3,33 +3,62 @@ package org.example;
 import org.example.Person;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         String a;
-        ArrayList<Person> people = new ArrayList<>();
+        ArrayList<Person> peopleOfSubject = new ArrayList<>();
         Person p1 = new Person("Paco", 02, 11, 2004);
-        people.add(p1);
+        peopleOfSubject.add(p1);
         Person p2 = new Person("Penelope", 05, 04, 2010);
-        people.add(p2);
+        peopleOfSubject.add(p2);
         Person p3 = new Person("Mariano", 17, 12, 2001);
-        people.add(p3);
+        peopleOfSubject.add(p3);
         Person p4 = new Person("Austin", 22, 10, 2002);
-        people.add(p4);
+        peopleOfSubject.add(p4);
         Person p5 = new Person("Joseph", 02, 11, 2004);
-        people.add(p5);
+        peopleOfSubject.add(p5);
         Person p6 = new Person("Manolo", 12, 04, 1984);
-        people.add(p6);
+        peopleOfSubject.add(p6);
 
-        ArrayList<Subject> sub = new ArrayList<>();
-        Subject subj1 = new Subject("Matemáticas", people);
-        sub.add(subj1);
-        Subject subj2 = new Subject("Historia", people);
-        sub.add(subj2);
-        Subject subj3 = new Subject("Química", people);
-        sub.add(subj3);
+        ArrayList<Subject> Degree = new ArrayList<>();
+        Subject subj1 = new Subject("Matemáticas", peopleOfSubject);
+        Degree.add(subj1);
+        Subject subj2 = new Subject("Historia", peopleOfSubject);
+        Degree.add(subj2);
+        Subject subj3 = new Subject("Química", peopleOfSubject);
+        Degree.add(subj3);
+        
+        ArrayList<Degree> classes = new ArrayList<>();
+        Degree deeg1 = new Degree("1 A", subj1);
+        try {
+            deeg1.addSubject(subj2);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            deeg1.addSubject(subj3);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        classes.add(deeg1);
+        
+        Degree deeg2 = new Degree("1 B", subj1);
+        try {
+            deeg1.addSubject(subj2);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            deeg1.addSubject(subj3);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        classes.add(deeg2);
         
         p1.addBrother("Francisco");
         p1.addBrother("Fernando");
@@ -55,21 +84,21 @@ public class Main {
             a = s.nextLine();
             if (!a.equals("0")) {
                 if (a.equals("1")) {
-                    listPeople(people);
+                    listPeople(peopleOfSubject);
                 } else if (a.equals("2")) {
-                    largeFamilies(people);
+                    largeFamilies(peopleOfSubject);
                 } else if (a.equals("3")) {
-                    listExpositos(people);
+                    listExpositos(peopleOfSubject);
                 } else if (a.equals("4")){
-                    nameBrothers(people, s);
+                    nameBrothers(peopleOfSubject, s);
                 }  else if (a.equals("5")){
-                    
+                    showAllStudentsInGrade(classes);
                 }  else if (a.equals("6")){
-                    for (Subject subject : sub) {
+                    for (Subject subject : Degree) {
                         showEnrolledStudents(subject);
                     }
                 }  else if (a.equals("7")){
-                    showAge(people);
+                    showAge(peopleOfSubject);
                 }
             }
         } while (!a.equals("0"));
@@ -110,7 +139,17 @@ public class Main {
         }
 
     }
-
+    public static void showAllStudentsInGrade(ArrayList<Degree> classes){
+        System.out.println("-------------- Alumnos por curso --------------");
+        for (Degree actualClass : classes) {
+            System.out.println("Clase " + actualClass);
+            ArrayList<Subject> subjects = actualClass.listSubject;
+            for (Subject subject : subjects) {
+                showEnrolledStudents(subject);
+            }
+        }
+        
+    }
     public static void showEnrolledStudents(Subject subject) {
         System.out.println("Alumnos matrículados en " + subject.subjectName + ":");
         for (Person student : subject.students) {
