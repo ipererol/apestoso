@@ -22,6 +22,14 @@ public class Main {
         people.add(p5);
         Person p6 = new Person("Manolo", 12, 04, 1984);
         people.add(p6);
+
+        ArrayList<Subject> sub = new ArrayList<>();
+        Subject subj1 = new Subject("Matemáticas", people);
+        sub.add(subj1);
+        Subject subj2 = new Subject("Historia", people);
+        sub.add(subj2);
+        Subject subj3 = new Subject("Química", people);
+        sub.add(subj3);
         
         p1.addBrother("Francisco");
         p1.addBrother("Fernando");
@@ -57,7 +65,9 @@ public class Main {
                 }  else if (a.equals("5")){
                     
                 }  else if (a.equals("6")){
-                    
+                    for (Subject subject : sub) {
+                        showEnrolledStudents(subject);
+                    }
                 }  else if (a.equals("7")){
                     showAge(people);
                 }
@@ -99,6 +109,16 @@ public class Main {
             }
         }
 
+    }
+
+    public static void showEnrolledStudents(Subject subject) {
+        System.out.println("Alumnos matrículados en " + subject.subjectName + ":");
+        for (Person student : subject.students) {
+            if (student != null) {
+                System.out.println(student.getName());
+            }
+        }
+        System.out.println("-----------------------------");
     }
     
     public static void showAge(ArrayList<Person> people) {
