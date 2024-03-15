@@ -13,11 +13,11 @@ public class Main {
         do {
             menu(sc, degreeAl);
 
-        } while (!answer.equals("6"));
+        } while (true);
     }
 
     public static void menu(Scanner sc, ArrayList<Student> degreeAl ) {
-        String respuesta = "";
+        String answer = "";
         do {
             System.out.println("---Elige una opcion---");
             System.out.println(" 1. Añadir alumno.");
@@ -25,20 +25,20 @@ public class Main {
             System.out.println(" 3. Listar Curso.");
             System.out.println(" S. Salir");
             
-            respuesta = sc.nextLine();
-          if (!(respuesta.equals("1")) || (respuesta.equals("2"))
-                || (respuesta.equals("3")) || (respuesta.equals("S"))) {
+            answer = sc.nextLine();
+          if (!(answer.equals("1")) || (answer.equals("2"))
+                || (answer.equals("3")) || (answer.equals("S"))) {
             System.out.println("Respuesta incorrecta. solo 1,2,3 o S para salir");
         }
  
-        } while (!(respuesta.equals("1")) || (respuesta.equals("2"))
-                || (respuesta.equals("3")) || (respuesta.equals("S")));
+        } while (!(answer.equals("1")) || (answer.equals("2"))
+                || (answer.equals("3")) || (answer.equals("S")));
         
-        if (respuesta.equals("1")) {
+        if (answer.equals("1")) {
             addStudent(sc,degreeAl );
-        }else if (respuesta.equals("2")){
+        }else if (answer.equals("2")){
             //Añadir Curso//
-        }else if (respuesta.equals("3")){
+        }else if (answer.equals("3")){
             System.out.println("---Listado del curso---");
             for (Student student1 : degreeAl) {
                 System.out.println(student1);
@@ -49,17 +49,17 @@ public class Main {
     public static void addStudent(Scanner sc, ArrayList<Student> degreeAl) {
         String answer, studentName, parent1Name, parent2Name, dateOfBitrthday;
         do {
-            System.out.print("---Introduzca lod datos del alumno: ---");
+            System.out.print("---Introduzca los datos del alumno: ---");
             System.out.print(" Introduzca el nombre completo del alumno: / o introduzca S para salir ");
             studentName = sc.nextLine();
             if (!studentName.equals("S")) {
-                System.out.println(" Introduzca la fecha de nacimiento del alumno: ");
+                System.out.println(" Introduzca la fecha de nacimiento del alumno(yyyy-mm-dd): ");
                 dateOfBitrthday = sc.nextLine();
                 System.out.print(" Introduzca el tutor 1: ");
                 parent1Name = sc.nextLine();
                 System.out.print(" Introduzca el tutor 2:");
                 parent2Name = sc.nextLine();
-                Student tmp = Student();
+                Student tmp = new Student();
                 degreeAl.add(tmp);
             }
 
