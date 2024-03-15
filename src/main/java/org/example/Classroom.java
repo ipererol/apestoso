@@ -1,40 +1,72 @@
 package org.example;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Classroom {
 
-    public String nombreAsignatura;
-    public ArrayList<clase2> alumnado;
-    public static final int MAX_ALUMNO = 50;
-    public static int ALUMNOS_MATRICULADOS = 0;
+    private String degreeName;
+    private final int MAX_SEATS;
+    private final int MAX_SUBJECTS;
+    private ArrayList<Subject> subjects;
+    private ArrayList<Student> students;
 
-    public Classroom(String nombreAsignatura, ArrayList<clase2> alumnado) {
-        this.nombreAsignatura = nombreAsignatura;
-        this.alumnado = alumnado;
-    }
+    public Classroom(String degreeName, int maxSeats, int maxSubjects, ArrayList<Subject> subjects, ArrayList<Student> students) throws Exception {
+        this.degreeName = degreeName;
+        this.MAX_SEATS = maxSeats;
 
-    public void anyadirPersona(clase2 classeo) throws Exception {
-        if (ALUMNOS_MATRICULADOS < 50) {
-            alumnado.add(classeo);
-            ALUMNOS_MATRICULADOS++;
+        if (maxSeats <= 0) {
+            throw new Exception("Tiene que haber menos de 0 plazas");
         }
+        if (maxSeats > 35) {
+            throw new Exception("Tiene que haber mas de 35 plazas");
+        }
+
+        this.MAX_SUBJECTS = maxSubjects;
+
+        if (subjects.size() > maxSubjects) {
+            throw new Exception("No puede haber mas de " + maxSubjects + " materias");
+
+        }
+
+        this.subjects = new ArrayList<>(subjects);
     }
 
-    public clase2 nombrarAlumno(int n) throws Exception {
-        if (alumnado.get(n) != null) {
-            return alumnado.get(n);
+    public String getDegreeName() {
+        return degreeName;
+    }
+
+    public void setDegreeName(String degreeName) {
+        this.degreeName = degreeName;
+    }
+
+    public int getMaxSeats() { // Use getters for constants
+        return MAX_SEATS;
+    }
+
+    public int getMaxSubjects() { // Use getters for constants
+        return MAX_SUBJECTS;
+    }
+
+    public ArrayList<Subject> getSubjects() {
+        return new ArrayList<>(subjects);
+    }
+
+    public void addSubject(Subject subject) throws Exception {
+        if (subjects.size() <= MAX_SUBJECTS) {
+
+            subjects.add(subject);
         } else {
-            throw new Exception("Error, no existe el alumno");
+            throw new Exception("Maximo de materias alcanzado");
         }
+
     }
 
-    public void darDeBajaAlumno(String nombre) {
-        for (int i = 0; i < alumnado.size(); i++) {
-            if (alumnado.get(i).getNombre_ALUMNO().equals(nombre)) {
-                alumnado.remove(i);
-                i--;
-            }
-        }
+    public ArrayList<Student> getStudents() {
+        return students;
     }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
 }

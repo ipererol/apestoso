@@ -1,56 +1,54 @@
-package codeclean;
+package org.example;
 
 import java.util.ArrayList;
-import java.util.List;
-import org.example.clase2;
 
 public class Subject {
-    private float subjectName;
-    private ArrayList<clase2> people;
-    private final int MAX_ALUMNOS;
-    
-    public Subject(float SubjectName, ArrayList<clase2> people, int MAX_ALUMNOS){
+
+    private String subjectName;
+    private ArrayList<Student> people;
+    private final int MAX_STUDENTS;
+
+    public Subject(String SubjectName, ArrayList<Student> people, int MAX_STUDENTS) {
         this.subjectName = SubjectName;
         this.people = people;
-        this.MAX_ALUMNOS = MAX_ALUMNOS;
+        this.MAX_STUDENTS = MAX_STUDENTS;
     }
-    
-    public float getSubjectName(){
+
+    public String getSubjectName() {
         return subjectName;
     }
 
-    public void setSubjectName(float subjectName){
+    public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
 
-    public ArrayList<clase2> getPeople(){
+    public ArrayList<Student> getPeople() {
         return people;
     }
 
-    public void setPeople(ArrayList<clase2> people){
+    public void setPeople(ArrayList<Student> people) {
         this.people = people;
     }
 
-    public int getMAX_ALUMNOS(){
-        return MAX_ALUMNOS;  
+    public int getMAX_STUDENTS() {
+        return MAX_STUDENTS;
     }
-    public void addStudent(clase2 Student)  throws Exception {
-       
-        if (people.size() < MAX_ALUMNOS) {
-            people.add(Student);
+
+    public void addStudent(Student student) throws Exception {
+
+        if (people.size() < MAX_STUDENTS) {
+            people.add(student);
 
         } else {
-            throw new Exception("Ha superado el maximo de alumnos");  
-            
+            throw new Exception("Ha superado el maximo de alumnos");
+
         }
     }
 
     public void listStudents() {
-        for (clase2 student : people) {
+        for (Student student : people) {
             System.out.println(student);
         }
     }
 
-
 }
-
