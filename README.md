@@ -1,4 +1,4 @@
-# Acerca de Trabajo de Gestor de palabra
+# Acerca del Trabajo de Gestor de palabra
 
 
 ### Se trata de un proyecto hecho para Entornos de desarrollo con los integrantes de Primero de DAW. 
