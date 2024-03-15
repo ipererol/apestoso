@@ -86,6 +86,20 @@ public class Main {
             }
         }
     }
+
+    public static void nameBrothers(ArrayList<Person> people, Scanner s) {
+        String search;
+        System.out.println("Introduce el nombre de la persona.");
+        search = s.nextLine();
+        for (Person person : people) {
+            if (person.getName().equals(search)) {
+                for (Person brother : person.getBrothers()) {
+                    System.out.println("-" + brother.getName());
+                }
+            }
+        }
+
+    }
     
     public static void showAge(ArrayList<Person> people) {
         for (Person person : people) {
