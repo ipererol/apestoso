@@ -107,21 +107,21 @@ public class Main {
     public static void listPeople(ArrayList<Person> people) {
         System.out.println("Listado de personas:");
         for (Person personTmp : people) {
-            System.out.println(personTmp);
+            System.out.println(personTmp.getName());
         }
     }
 
     public static void largeFamilies(ArrayList<Person> people) {
         for (Person person : people) {
             if (person.largeFamily()) {
-                System.out.println(person);
+                System.out.println(person.getName());
             }
         }
     }
     public static void listExpositos(ArrayList<Person> people) {
         for (Person person : people) {
             if (person.get_Exposito() == true) {
-                System.out.println(person + " es exposito");
+                System.out.println(person.getName() + " es exposito");
             }
         }
     }
