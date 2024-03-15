@@ -1,21 +1,35 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 
-public class Student extends Person{
-    private Calendar birthdate;
+public class Student extends Person {
+
+    private LocalDate birthdate;
     private Person legalTutor1;
     private Person legalTutor2;
-    private ArrayList<Student> brother = new ArrayList<>();
+    private ArrayList<Person> siblings;
 
-    public Student(Calendar birthdate, Person legalTutor1, Person legalTutor2, String name) {
+    public Student(String birthdate, String legalTutor1, String legalTutor2, ArrayList<Person> siblings, String name) {
         super(name);
-        this.birthdate = birthdate;
-        this.legalTutor1 = legalTutor1;
-        this.legalTutor2 = legalTutor2;
+        this.birthdate = LocalDate.parse(birthdate);
+        this.legalTutor1 = new Person(legalTutor1);
+        this.legalTutor2 = new Person(legalTutor2);
+        this.siblings = siblings;
     }
-    
+
+    public Student(String birthdate, String legalTutor1, String legalTutor2, String name) {
+        super(name);
+        this.birthdate = LocalDate.parse(birthdate);
+        this.legalTutor1 = new Person(legalTutor1);
+        this.legalTutor2 = new Person(legalTutor2);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "birthdate=" + birthdate + ", legalTutor1=" + legalTutor1 + ", legalTutor2=" + legalTutor2 + ", siblings=" + siblings + super.toString();
+    }
+
     public String getName() {
         return name;
     }
@@ -32,12 +46,12 @@ public class Student extends Person{
         this.legalTutor1 = legalTutor1;
     }
 
-    public Calendar getBirhdate(){
-	return birthdate;
+    public LocalDate getBirhdate() {
+        return birthdate;
     }
 
-    public void setBirthdate(Calendar birthdate){
-    	this.birthdate = birthdate;
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
     public Person getLegalTutor2() {
@@ -48,23 +62,18 @@ public class Student extends Person{
         this.legalTutor2 = legalTutor2;
     }
 
-    public ArrayList<Student> getBrother() {
-        return brother;
+    public ArrayList<Person> getSiblings() {
+        return siblings;
     }
 
-    public void setBrother(ArrayList<Student> brother) {
-        this.brother = brother;
-    }
-
-    public void addBrother(Student brother) {
-        this.brother.add(brother);
-        brother.getBrother().add(this);
+    public void setSiblings(ArrayList<Person> siblings) {
+        this.siblings = siblings;
     }
 
     public boolean isLargeFamily() {
-        return brother.size() > 2;
+        return siblings.size() > 2;
     }
-    
+
     public boolean isOrphan() {
         return (legalTutor1 == null && legalTutor2 == null);
     }
