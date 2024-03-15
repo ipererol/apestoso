@@ -1,0 +1,53 @@
+La clase Main es la que interactuará con el usuario.
+Las distintas clases tienen métodos con el objetivo de consultar datos.
+El Main debe ser una clase ejecutable que muestre el listado de los objetos creados anteriormente 
+por nosotros y soutear las distintas consultas, por ejemplo: 
+
+------Lista de huérfanos-------
+
+*LISTADO DE HUÉRFANOS UTILIZANDO EL MÉTODO get_Exposito*
+
+La clase Main se ejecutará de la siguiente manera:
+
+INICIO
+
+crear objetos (personas, clases y asignaturas)
+
+sout con descripción de la aplicación
+
+menú con un bucle do{
+a = sc.nextLine();
+if (!a.equals("0")) {
+	if (a.equals("1")) {
+		
+		Método para listar todos las personas;
+			
+	} else if ("2") {
+	
+		Método para mostrar las personas a las que familiaNumerosa() devuelve TRUE;
+	
+	} else if ("3") {
+		
+		Método para mostrar las personas a las que get_Exposito() devuelve TRUE;
+		
+	} else if ("4") {
+		
+		Método para mostrar los hermanos de la persona indicada;
+		
+	} else if ("5") {
+		
+		Método para mostrar todas las personas en un curso;	
+		
+	} else if ("6") {
+	
+		Método para mostrar todas las personas matriculadas en una asignatura;
+	
+	} else if ("7") {
+		
+		Método para mostrar la edad de todas las personas;	
+		
+	}
+}
+} while (!a.equals("0"))
+
+FIN
