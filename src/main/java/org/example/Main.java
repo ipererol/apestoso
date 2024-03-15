@@ -38,13 +38,15 @@ public class Main {
             System.out.println("Introduzca un número para: ");
             System.out.println("1) Listar a todas las personas");
             System.out.println("2) Listar a las personas que tengan familia numerosa.");
-            
+             System.out.println("3) Listar las personas que son huerfanos.");
             a = s.nextLine();
             if (!a.equals("0")) {
                 if (a.equals("1")) {
                     listPersons(people);
                 } else if (a.equals("2")) {
                     familiasNumerosas(people);
+                } else if (a.equals("3")) {
+                    get_exposito(people);
                 }
             }
         } while (!a.equals("0"));
@@ -63,5 +65,14 @@ public class Main {
                 System.out.println(person);
             }
         }
+    }
+        public static void get_exposito(ArrayList<Person> people) {
+        for (Person person : people) {
+            if (person.get_Exposito() == true) {
+                System.out.println(person + " es exposito");
+            }
+
+        }
+
     }
 }
