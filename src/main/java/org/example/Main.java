@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Person;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -78,17 +79,18 @@ public class Main {
             }
         }
     }
-        public static void listExpositos(ArrayList<Person> people) {
+    public static void listExpositos(ArrayList<Person> people) {
         for (Person person : people) {
             if (person.get_Exposito() == true) {
                 System.out.println(person + " es exposito");
             }
-
         }
- public static void showAge(ArrayList<Person> people){ 
+    }
+    
+    public static void showAge(ArrayList<Person> people) {
         for (Person person : people) {
             System.out.println(person.getName() + "tiene " + person.getAge());
         }
     }
-    }
+
 }
