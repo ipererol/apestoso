@@ -13,13 +13,10 @@ public class Classroom {
         this.alumnado = alumnado;
     }
 
-    public int anyadirPersona(clase2 classeo) {
+    public void anyadirPersona(clase2 classeo) throws Exception {
         if (ALUMNOS_MATRICULADOS < 50) {
-            alumnado[ALUMNOS_MATRICULADOS] = classeo;
+            alumnado.add(classeo);
             ALUMNOS_MATRICULADOS++;
-            return 1;
-        } else {
-            return 0;
         }
     }
 
