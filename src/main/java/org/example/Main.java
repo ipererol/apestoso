@@ -46,11 +46,11 @@ public class Main {
             a = s.nextLine();
             if (!a.equals("0")) {
                 if (a.equals("1")) {
-                    listPersons(people);
+                    listPeople(people);
                 } else if (a.equals("2")) {
-                    familiasNumerosas(people);
+                    largeFamilies(people);
                 } else if (a.equals("3")) {
-                    get_exposito(people);
+                    listExpositos(people);
                 } else if (a.equals("4")){
                     
                 }  else if (a.equals("5")){
@@ -58,34 +58,34 @@ public class Main {
                 }  else if (a.equals("6")){
                     
                 }  else if (a.equals("7")){
-                    mostrarEdad(people);
+                    showAge(people);
                 }
             }
         } while (!a.equals("0"));
     }
 
-    public static void listPersons(ArrayList<Person> people) {
+    public static void listPeople(ArrayList<Person> people) {
         System.out.println("Listado de personas:");
         for (Person personTmp : people) {
             System.out.println(personTmp);
         }
     }
 
-    public static void familiasNumerosas(ArrayList<Person> people) {
+    public static void largeFamilies(ArrayList<Person> people) {
         for (Person person : people) {
             if (person.largeFamily()) {
                 System.out.println(person);
             }
         }
     }
-        public static void get_exposito(ArrayList<Person> people) {
+        public static void listExpositos(ArrayList<Person> people) {
         for (Person person : people) {
             if (person.get_Exposito() == true) {
                 System.out.println(person + " es exposito");
             }
 
         }
- public static void mostrarEdad(ArrayList<Person> people){ 
+ public static void showAge(ArrayList<Person> people){ 
         for (Person person : people) {
             System.out.println(person.getName() + "tiene " + person.getAge());
         }
