@@ -21,10 +21,11 @@ public class Classroom {
     }
 
     public clase2 nombrarAlumno(int n) throws Exception {
-        if (alumnado[n] == null)
-            return alumnado[n];
-        else
-            throw new Exception("excepcion");
+        if (alumnado.get(n) != null) {
+            return alumnado.get(n);
+        } else {
+            throw new Exception("Error, no existe el alumno");
+        }
     }
 
     public boolean darDeBajaAlumno(String nombre) {
