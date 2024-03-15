@@ -31,12 +31,8 @@ public class Subject {
         if (outOfRange) {
             throw new Exception(notExists);
         }
-        Person student = students.get(position);        
-        if (student == null) {
-            throw new Exception(notExists);
-        } else {
-            return student;
-        }
+        Person student = students.get(position);
+        return student;
     }
 
     public boolean withdrawStudent(String nombre) {

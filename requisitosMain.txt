@@ -1,28 +1,19 @@
-El bucle para crear el programa es desastroso.
 La clase Main es la que interactuará con el usuario.
 Las distintas clases tienen métodos con el objetivo de consultar datos.
-El Main debe ser una clase ejecutable que muestre el listado de los objetos creados anteriormente por nosotros y soutear las distintas 
-consultas que hemos hecho en dicho ejercicio, por ejemplo: 
+El Main debe ser una clase ejecutable que muestre el listado de los objetos creados anteriormente 
+por nosotros y soutear las distintas consultas, por ejemplo: 
 
-------Magos con toga blanca o verde eliminados------
-
-------*LISTADO DE MAGOS*--------
-
-pero adaptado a este ejercicio:
-
-------Listado de huérfanos-------
+------Lista de huérfanos-------
 
 *LISTADO DE HUÉRFANOS UTILIZANDO EL MÉTODO get_Exposito*
-
-
 
 La clase Main se ejecutará de la siguiente manera:
 
 INICIO
 
-sout con descripción de la aplicación
+crear objetos (personas, clases y asignaturas)
 
-crear objetos (personas, clases y asignaturas) y soutear un listado de estos. 
+sout con descripción de la aplicación
 
 menú con un bucle do{
 a = sc.nextLine();
@@ -51,6 +42,10 @@ if (!a.equals("0")) {
 	
 		Método para mostrar todas las personas matriculadas en una asignatura;
 	
+	} else if ("7") {
+		
+		Método para mostrar la edad de todas las personas;	
+		
 	}
 }
 } while (!a.equals("0"))
