@@ -3,18 +3,18 @@ package org.example;
 public class Clase_3 {
     public float nombreAsignatura ;
     public clase2[] alumnado;
-    public int maxNALIUMNOS = 50;
-    public int intALumnos_matriculaos = 0;
+    public static final int MAX_ALUMNO = 50;
+    public static int ALUMNOS_MATRICULADOS = 0;
 
     public Clase_3(float nombre) {
         nombreAsignatura = nombre;
-        alumnado = new clase2[maxNALIUMNOS];
+        alumnado = new clase2[MAX_ALUMNO];
     }
 
     public int aniadirPersona(clase2 classeo) {
-        if (intALumnos_matriculaos < 50) {
-            alumnado[intALumnos_matriculaos] = classeo;
-            intALumnos_matriculaos++;
+        if (ALUMNOS_MATRICULADOS < 50) {
+            alumnado[ALUMNOS_MATRICULADOS] = classeo;
+            ALUMNOS_MATRICULADOS++;
             return 1;
         } else {
             return 0;
