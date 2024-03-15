@@ -61,7 +61,7 @@ public class Main {
                 } else if (a.equals("3")) {
                     listExpositos(people);
                 } else if (a.equals("4")){
-                    
+                    nameBrothers(people, s);
                 }  else if (a.equals("5")){
                     
                 }  else if (a.equals("6")){
