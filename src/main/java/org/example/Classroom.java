@@ -3,7 +3,8 @@ package org.example;
 import java.util.*;
 
 public class Classroom {
-    public String nombreAsignatura ;
+
+    public String nombreAsignatura;
     public ArrayList<clase2> alumnado;
     public static final int MAX_ALUMNO = 50;
     public static int ALUMNOS_MATRICULADOS = 0;
@@ -28,18 +29,12 @@ public class Classroom {
         }
     }
 
-    public boolean darDeBajaAlumno(String nombre) {
-        int i = 0;
-        for(clase2 c4 : alumnado) {
-            if(alumnado[i].equals(new clase2(nombre)))
-                break;
-            i++;
-        }
-        if(i==50) {
-            return false;
-        } else {
-            alumnado[i] = null;
-            return false;
+    public void darDeBajaAlumno(String nombre) {
+        for (int i = 0; i < alumnado.size(); i++) {
+            if (alumnado.get(i).getNombre_ALUMNO().equals(nombre)) {
+                alumnado.remove(i);
+                i--;
+            }
         }
     }
 }
