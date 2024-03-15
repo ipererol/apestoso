@@ -38,7 +38,11 @@ public class Main {
             System.out.println("Introduzca un número para: ");
             System.out.println("1) Listar a todas las personas");
             System.out.println("2) Listar a las personas que tengan familia numerosa.");
-             System.out.println("3) Listar las personas que son huerfanos.");
+            System.out.println("3) Listar las personas que son huerfanos.");
+            System.out.println("4) Mostrar los hermanos de la persona ");
+            System.out.println("5) Mostrar todas las personas en un curso");
+            System.out.println("6) Mostrar todas las personas matriculadas en una asignatura");
+            System.out.println("7) Mostrar la edad de todas las personas");
             a = s.nextLine();
             if (!a.equals("0")) {
                 if (a.equals("1")) {
@@ -47,6 +51,14 @@ public class Main {
                     familiasNumerosas(people);
                 } else if (a.equals("3")) {
                     get_exposito(people);
+                } else if (a.equals("4")){
+                    
+                }  else if (a.equals("5")){
+                    
+                }  else if (a.equals("6")){
+                    
+                }  else if (a.equals("7")){
+                    mostrarEdad(people);
                 }
             }
         } while (!a.equals("0"));
@@ -73,6 +85,10 @@ public class Main {
             }
 
         }
-
+ public static void mostrarEdad(ArrayList<Person> people){ 
+        for (Person person : people) {
+            System.out.println(person.getName() + "tiene " + person.getAge());
+        }
+    }
     }
 }
