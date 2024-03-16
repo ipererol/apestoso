@@ -13,21 +13,34 @@ public class Student extends Person {
     public Student(String birthdate, String legalTutor1, String legalTutor2, ArrayList<Person> siblings, String name) {
         super(name);
         this.birthdate = LocalDate.parse(birthdate);
-        this.legalTutor1 = new Person(legalTutor1);
-        this.legalTutor2 = new Person(legalTutor2);
-        this.siblings = siblings;
+        if (!legalTutor2.equalsIgnoreCase("null")) {
+           this.legalTutor2 = new Person(legalTutor1); 
+        }
+        if (!legalTutor1.equalsIgnoreCase("null")) {
+           this.legalTutor1 = new Person(legalTutor1); 
+        }     
+           this.siblings = siblings;
     }
 
     public Student(String birthdate, String legalTutor1, String legalTutor2, String name) {
         super(name);
+        this.birthdate = LocalDate.parse(birthdate);  if (!legalTutor2.equalsIgnoreCase("null")) {
+           this.legalTutor2 = new Person(legalTutor1); 
+        }
+        if (!legalTutor1.equalsIgnoreCase("null")) {
+           this.legalTutor1 = new Person(legalTutor1); 
+        }
+    }
+    public Student(String birthdate, String name) {
+        super(name);
         this.birthdate = LocalDate.parse(birthdate);
-        this.legalTutor1 = new Person(legalTutor1);
-        this.legalTutor2 = new Person(legalTutor2);
+     
+
     }
 
     @Override
     public String toString() {
-        return "Student{" + "birthdate=" + birthdate + ", legalTutor1=" + legalTutor1 + ", legalTutor2=" + legalTutor2 + ", siblings=" + siblings + super.toString();
+        return "Estudiante{" +super.toString()+ "FechaNacimiento=" + birthdate + ", Tutor legal 1=" + legalTutor1 + ",Tutor legal 2=" + legalTutor2 + ", siblings=" + siblings;
     }
 
     public String getName() {
@@ -71,10 +84,12 @@ public class Student extends Person {
     }
 
     public boolean isLargeFamily() {
-        return siblings.size() > 2;
+        if (siblings == null) return false;
+         else return siblings.size() > 2;
+        
     }
 
-    public boolean isOrphan() {
-        return (legalTutor1 == null && legalTutor2 == null);
+    public boolean isTutored() {
+        return legalTutor1 != null || legalTutor2 != null;
     }
 }

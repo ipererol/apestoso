@@ -21,41 +21,42 @@ public class Main {
             scFile = new Scanner(f);
 
             daw = startClassClassroom(scFile);
-            menu(sc, daw.getStudents());
+
+            menu(sc, daw);
+
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public static void menu(Scanner sc, ArrayList<Student> students) {
-        String answer = "";
+    public static void menu(Scanner sc, Classroom daw) throws Exception {
+        String option;
+
         do {
-            System.out.println("---Elige una opcion---");
-            System.out.println(" 1. Añadir alumno.");
-            System.out.println(" 2. Listar Curso.");
-            System.out.println(" 3. Eliminar alumno.");
-            System.out.println(" S. Salir");
+            textoMenu();
 
-            answer = sc.nextLine();
-            if (!((answer.equals("1")) || (answer.equals("2"))
-                    || (answer.equals("3")) || (answer.equalsIgnoreCase("S")))) {
-                System.out.println("Respuesta incorrecta. solo 1,2,3,4 o S para salir");
+            option = sc.nextLine();
+            if (!option.equalsIgnoreCase("s")) {
+                if (!option.equals("1") && !option.equals("2") && !option.equals("3")
+                        && !option.equals("4") && !option.equals("5") && !option.equals("6") && !option.equals("7") && !option.equals("8")) {
+                    System.out.println("Respuesta incorrecta. Solo 1,2,3,4,5,6,7,8 o S para salir");
+                } else {
+                    switch (option) {
+                        case "1" -> addStudent(sc, daw.getStudents());
+                        case "2" -> listarCurso(daw.getStudents());
+                        case "3" -> deleteStudents(sc, daw.getStudents());
+                        case "4" -> listSubjects(sc, daw.getSubjects());
+                        case "5" -> unenrollStundent(sc, daw.getSubjects());
+                        case "6" -> enrollStundent(sc, daw.getSubjects(), daw.getStudents());
+                        case "7" -> listUntutored(daw.getStudents());
+                        case "8" -> listLargeFamily(daw.getStudents());
+                    }
+                }
+
             }
 
-        } while (!((answer.equals("1")) || (answer.equals("2"))
-                || (answer.equals("3")) || (answer.equalsIgnoreCase("S"))));
-
-        if (answer.equals("1")) {
-            addStudent(sc, students);
-        } else if (answer.equals("2")) {
-            System.out.println("---Listado del curso---");
-            for (Student student : students) {
-                System.out.println(student);
-            }
-        } else if (answer.equals("3")) {
-            deleteStudents(sc, students);
-        }
+        } while (!option.equalsIgnoreCase("s"));
     }
 
     public static void addStudent(Scanner sc, ArrayList<Student> students) {
@@ -65,15 +66,24 @@ public class Main {
 
         do {
             System.out.println("---Introduzca los datos del alumno: ---");
-            System.out.println(" Introduzca el nombre completo del alumno: / o introduzca S para salir ");
+            System.out.println(" Introduzca el nombre completo del alumno: ");
+            System.out.println("Introduce S para salir");
             studentName = sc.nextLine();
             if (!studentName.equalsIgnoreCase("S")) {
                 System.out.println(" Introduzca la fecha de nacimiento del alumno(yyyy-mm-dd): ");
                 dateOfBitrthday = sc.nextLine();
-                System.out.print(" Introduzca el tutor 1: ");
+                System.out.print(" Introduzca el tutor 1: o null si no hay");
                 parent1Name = sc.nextLine();
-                System.out.print(" Introduzca el tutor 2:");
+                if (parent1Name.equalsIgnoreCase("null")) {
+               
+                    parent1Name = "null";
+                }
+                System.out.print(" Introduzca el tutor 2: o null si no hay");
                 parent2Name = sc.nextLine();
+                if (parent2Name.equalsIgnoreCase("null")) {
+                  
+                    parent2Name = "null";
+                }
                 siblings = addSiblings(sc);
                 if (siblings.isEmpty()) {
                     tmp = new Student(dateOfBitrthday, parent1Name, parent2Name, studentName);
@@ -89,11 +99,11 @@ public class Main {
     public static void deleteStudents(Scanner sc, ArrayList<Student> students) {
         String nameStudentDelete;
         Student tmp = null;
-        System.out.println("---Introduzca los datos del alumno a borrar: ---");
+        System.out.println("---Introduzca el nombre del alumno a borrar: ---");
         nameStudentDelete = sc.nextLine();
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getName().equals(nameStudentDelete)) {
+            if (students.get(i).getName().equalsIgnoreCase(nameStudentDelete)) {
                 tmp = students.get(i);
             }
         }
@@ -112,12 +122,13 @@ public class Main {
 
         if (answer.equalsIgnoreCase("s")) {
             do {
-                System.out.println("Introduzca el nombre del hermano/a (para finalizar FIN): ");
+                System.out.println("Introduzca el nombre del hermano/a: ");
                 nameSibling = sc.nextLine();
                 if (!nameSibling.equals("FIN")) {
                     siblings.add(new Person(nameSibling));
                 }
-            } while (!nameSibling.equals("FIN"));
+                System.out.println("Para finalizar ingresa FIN");
+            } while (!nameSibling.equalsIgnoreCase("FIN"));
         } else {
 
         }
@@ -136,22 +147,17 @@ public class Main {
             birthdate = tmp[3] + "-" + tmp[2] + "-" + tmp[1];
             nameStudent = tmp[0];
 
-            studentList.add(new Student(birthdate, "Enrique Nogal", "Nuestras madres", nameStudent));
+            studentList.add(new Student(birthdate, "Enrique Nogal", "Mama de "+nameStudent, nameStudent));
 
         }
-
+        scFile.close();
         subjectList = startSubjects(studentList);
 
-        for (Student student : studentList) {
-            System.out.println(student);
-        }
-
-        Classroom tmp = new Classroom("DAW", MAX_STUDENTS, MAX_SUBJECTS, subjectList, studentList);
-        return tmp;
+        return new Classroom("DAW", MAX_STUDENTS, MAX_SUBJECTS, subjectList, studentList);
 
     }
 
-    public static ArrayList<Subject> startSubjects(ArrayList<Student> studentList) {
+    public static ArrayList<Subject> startSubjects(ArrayList<Student> studentList) {//inicializamos las variables de asignaturas
         ArrayList<Subject> subjectList = new ArrayList<>();
 
         subjectList.add(new Subject("Entornos de desarrollo", studentList, MAX_STUDENTS));
@@ -161,6 +167,126 @@ public class Main {
         subjectList.add(new Subject("Sistemas informaticos", studentList, MAX_STUDENTS));
 
         return subjectList;
+    }
+
+    private static void listarCurso(ArrayList<Student> students) {
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------Listado de alumnos----------------------------------------------------------------------------------------------");
+        for (Student student : students) {
+            System.out.println(student);
+        }
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    private static void unenrollStundent(Scanner sc, ArrayList<Subject> subjects) throws Exception {
+        String nameStudentDelete, subjectName;
+        System.out.println("---Introduzca el nombre del alumno a borrar: ---");
+        nameStudentDelete = sc.nextLine();
+
+        System.out.println("---Introduzca el nombre del la asignatura a desmatricular: ---");
+        subjectName = sc.nextLine();
+        for (int i = 0; i < subjects.size(); i++) {
+            if (subjects.get(i).getSubjectName().equalsIgnoreCase(subjectName)) {
+
+                for (int j = 0; j < subjects.get(i).getStudents().size(); j++) {
+
+                    if (subjects.get(i).getStudents().get(j).getName().equalsIgnoreCase(nameStudentDelete)) {
+
+                        subjects.get(i).getStudents().remove(j);
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private static void enrollStundent(Scanner sc, ArrayList<Subject> subjects, ArrayList<Student> students) throws Exception {
+        String nameStudentToAdd, subjectName;
+        Student aux = null;
+        System.out.println("---Introduzca el nombre del alumno a matricular----");
+        nameStudentToAdd = sc.nextLine();
+        for (Student student : students) {
+            if (student.getName().equalsIgnoreCase(nameStudentToAdd)) {
+                aux = student;
+            }
+        }
+
+        System.out.println("---Introduzca el nombre del la asignatura a matricular-------");
+        subjectName = sc.nextLine();
+        for (int i = 0; i < subjects.size(); i++) {
+            if (subjects.get(i).getSubjectName().equalsIgnoreCase(subjectName)) {
+                
+                for (int j = 0; j < subjects.get(i).getStudents().size(); j++) {
+                   
+                    if (subjects.get(i).getStudents().get(j).getName().equalsIgnoreCase(nameStudentToAdd)) {
+
+                        subjects.get(i).getStudents().add(aux);
+                        
+                    }
+                    break;
+                }
+
+            }
+
+        }
+
+    }
+
+    private static void listSubjects(Scanner sc, ArrayList<Subject> subjects) {
+        System.out.println("-------------Ingrese asignatura a listar------------");
+        String subjectName = sc.nextLine();
+        for (int i = 0; i < subjects.size(); i++) {
+            if (subjects.get(i).getSubjectName().equalsIgnoreCase(subjectName)) {
+                for (Student student : subjects.get(i).getStudents()) {
+                    System.out.println(student);
+                }
+            }
+
+        }
+
+    }
+
+    private static void listLargeFamily(ArrayList<Student> students) {
+        System.out.println("-------Alumnos con familia numerosa--------");
+           int c=0;
+        for (Student student : students) {
+            if (student.isLargeFamily()) {
+                System.out.println(student);
+                c++;
+            }
+        }
+          if (c==0)System.out.println("Ningun alumno no tiene tutor");
+    }
+
+    private static void listUntutored(ArrayList<Student> students) {
+        System.out.println("--------------Alumnos sin tutores----------");
+        int c=0;
+        for (Student student : students) {
+
+            if (!student.isTutored()) {
+                System.out.println(student);
+                c++;
+            }
+        }
+        if (c==0)System.out.println("Ningun alumno no tiene tutor");
+    }
+
+    private static void textoMenu() {
+        System.out.println("--------------------Elige una opcion---------------------");
+            System.out.println(" 1. Añadir alumno.");
+            System.out.println(" 2. Listar Curso.");
+            System.out.println(" 3. Eliminar alumno.");
+            System.out.println(" 4. Listar asignatura.");
+            System.out.println(" 5. Desmatricular de asignatura a alumno.");
+            System.out.println(" 6. Matricular en asignatura a alumno.(solo puedes matricularlo si no estaba anterior mente)");//by default all are enrolled in all Subjects
+            System.out.println(" 7. Listar sin tutores legales.");
+            System.out.println(" 8. Listar familia numerosa.");
+            System.out.println(" S. Salir");
+            System.out.println("----------------------------------------------------------");
     }
 
 }

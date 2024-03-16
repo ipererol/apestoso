@@ -13,6 +13,7 @@ public class Classroom {
     public Classroom(String degreeName, int maxSeats, int maxSubjects, ArrayList<Subject> subjects, ArrayList<Student> students) throws Exception {
         this.degreeName = degreeName;
         this.MAX_SEATS = maxSeats;
+        this.students = students;
 
         if (maxSeats <= 0) {
             throw new Exception("Tiene que haber menos de 0 plazas");
